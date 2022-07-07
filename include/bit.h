@@ -46,3 +46,11 @@ static inline bit_reader* new_reader(void* buffer, size_t bufsize) {
 static inline size_t left_bits(bit_writer * writer) {
         return writer->avail;
 }
+
+static inline size_t written_len(bit_writer * writer) {
+        return ((writer->cursor - writer->buffer) << 3) + writer->pos; 
+}
+
+static inline size_t read_len(bit_reader * reader) {
+        return ((reader->cursor - reader->buffer) << 3) + reader->pos; 
+}
